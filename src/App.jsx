@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { lazy, Suspense } from "react";
+import { FadeLoader } from "react-spinners";
 
 const Register = lazy(() => import("./pages/Register"));
 const Login = lazy(() => import("./pages/Login"));
@@ -15,9 +16,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 const App = () => {
   return (
-    <Suspense fallback={<h1>Loading Movie app</h1>}>
+    <Suspense fallback={<FadeLoader speedMultiplier="-20" />}>
       <Router>
-        
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
