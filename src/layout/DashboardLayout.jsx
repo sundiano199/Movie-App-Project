@@ -1,21 +1,23 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+
 import Logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Outlet, NavLink, Link, useLocation } from "react-router-dom";
 import menu from "../assets/menu-icon.png";
 import movies from "../assets/movies.png";
 import tv from "../assets/tv.png";
 import bookmark from "../assets/bookmark.png";
 import profile from "../assets/profile.png";
 import search from "../assets/search.png";
-import profile2 from "../assets/profile2.png"
+import profile2 from "../assets/profile2.png";
 
 const DashboardLayout = () => {
+  console.log(useLocation());
+  const isProfile = useLocation().pathname === "/dashboard/home"; // to set the pathname to dashboard/profile
   return (
     <div className="md:flex  ">
       <div className="flex justify-between md:flex-col  md:my-[32px] md:ml-[32px] md:mr-[36px] bg-[#161D2F] rounded-none md:rounded-[20px] md:px-[28px] px-[16px] py-[18px] md:py-0 ">
         <div className="">
-          <Link to="/">
+          <Link to="/dashboard">
             <img
               src={Logo}
               alt="Logo"
@@ -25,12 +27,49 @@ const DashboardLayout = () => {
         </div>
         <div
           className="flex justify-between items-center
-         gap-5 md:block"
+         gap-5 md:flex-col md:mb-[552px]"
         >
-          <img src={menu} alt="" className="md:mx-auto md:pb-[40px]" />
-          <img src={movies} alt="" className="md:mx-auto md:pb-[40px]" />
-          <img src={tv} alt="" className="md:mx-auto md:pb-[40px]" />
-          <img src={bookmark} alt="" className="md:mx-auto md:pb-[552px]" />
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "text-white"
+            }
+            to="/dashboard"
+            end
+          >
+            <button className="cursor-pointer">
+              <img src={menu} alt="" className="md:mx-auto md:mb-[40px]" />
+            </button>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "text-white"
+            }
+            to="/dashboard/movies"
+          >
+            <button className="cursor-pointer">
+              <img src={movies} alt="" className="md:mx-auto md:mb-[40px]" />
+            </button>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "text-white"
+            }
+            to="/dashboard/tv-series"
+          >
+            <button className="cursor-pointer">
+              <img src={tv} alt="" className="md:mx-auto md:mb-[40px]" />
+            </button>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "text-white"
+            }
+            to="/dashboard/bookmarked"
+          >
+            <button className="cursor-pointer">
+              <img src={bookmark} alt="" className="md:mx-auto " />
+            </button>
+          </NavLink>
         </div>
         <div className="">
           <img src={profile} alt="" className="h-6 md:hidden md:pb-[32px]" />

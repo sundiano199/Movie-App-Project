@@ -1,8 +1,11 @@
 import React from "react";
 import trending from "../assets/trending-1.png";
 import recommmeded from "../assets/recommended.png"
+import { useEffect, useState } from "react";
 
 const Home = () => {
+ 
+  
   return (
     <div className="w-full overflow-x-hidden max-w-full ">
       <div className="mt-[34px] pl-[16px] md:pl-0">
